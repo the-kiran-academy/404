@@ -1,0 +1,22 @@
+# Java/Maven
+target/
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+*.class
+bin/
+out/
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.vscode/
+.metadata

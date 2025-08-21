@@ -1,0 +1,33 @@
+package com.tka.operation.criteria;
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.tka.config.HibernateConfig;
+import com.tka.entity.Product;
+
+public class PaginationEx {
+
+	public static void main(String[] args) {
+		SessionFactory sf = HibernateConfig.getSessionFactory();
+
+		Session session = sf.openSession();
+
+		Criteria criteria = session.createCriteria(Product.class);
+		
+	//	criteria.setFirstResult(5-3);    last 3 record
+		
+		criteria.setFirstResult(3);  // from 3rd record
+		criteria.setMaxResults(3);
+		
+		List<Product> list = criteria.list();
+		
+		for (Product product : list) {
+			System.out.println(product);
+		}
+	}
+
+}
