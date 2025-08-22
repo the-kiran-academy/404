@@ -3,6 +3,7 @@ package com.tka.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -70,8 +71,20 @@ public class Persion {
 		this.accounts = accounts;
 	}
 
-	private void display() {
-		System.out.println("Persion [pid=" + pid + ", name=" + name + ", age=" + age + ", accounts=" + accounts + "]");
+	public void display() {
+		
+		
+		System.out.println("Persion [pid=" + pid + ", name=" + name + ", age=" + age + "]");
+
+		if (accounts != null && !accounts.isEmpty()) {
+			System.out.println("Accounts:");
+			for (Account account : accounts) {
+				account.display();
+			}
+		} else {
+			System.out.println("No accounts associated with this persion.");
+		}
+		
 
 	}
 	
