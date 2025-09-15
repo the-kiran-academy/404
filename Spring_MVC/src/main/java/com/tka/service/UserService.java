@@ -10,5 +10,9 @@ public interface UserService {
 	public int registerUser(User user);
 	
 	public List<User> allUser();
+	public boolean deleteUser(int id);
+	
+	public User getUser(int id);
+	public boolean updateProfile(User user);
 
 }

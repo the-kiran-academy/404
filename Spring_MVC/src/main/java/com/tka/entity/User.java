@@ -26,6 +26,8 @@ public class User {
 	private String gender;
 	private String dob;
 	
+	private String createdAt;
+	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -86,11 +88,22 @@ public class User {
 		this.dob = dob;
 	}
 
+	
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", password=" + password + ", gender=" + gender + ", dob=" + dob + "]";
+				+ ", password=" + password + ", gender=" + gender + ", dob=" + dob + ", createdAt=" + createdAt + "]";
 	}
+
+	
 	
 	
 

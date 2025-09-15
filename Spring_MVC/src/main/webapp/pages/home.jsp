@@ -25,6 +25,13 @@ main {
 	background: #f8f9fa;
 }
 
+.alert-msg {
+	text-align: center;
+	margin-bottom: 15px;
+	color: red;
+	font-weight: 500;
+}
+
 footer {
 	background: #343a40;
 	color: #fff;
@@ -52,7 +59,9 @@ footer {
 	<main class="container">
 
 
-
+		<c:if test="${not empty msg}">
+			<div class="alert-msg">${msg}</div>
+		</c:if>
 		<div class="table-responsive">
 			<table
 				class="table table-striped table-bordered table-hover align-middle">
@@ -65,6 +74,7 @@ footer {
 						<th>Password</th>
 						<th>DOB</th>
 						<th>Gender</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 
@@ -78,6 +88,8 @@ footer {
 							<td>${u.password}</td>
 							<td>${u.dob}</td>
 							<td>${u.gender}</td>
+							<td><a class="btn btn-danger" href="/delete/${u.id}">Delete</a>
+								<a class="btn btn-primary" href="/show?id=${u.id}">Show</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

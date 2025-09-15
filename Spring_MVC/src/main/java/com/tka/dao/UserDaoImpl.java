@@ -40,33 +40,77 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int registerUser(User user) {
-		int status=0;
-		try(Session session = sessionFactory.openSession()) {
+		int status = 0;
+		try (Session session = sessionFactory.openSession()) {
 			Transaction transaction = session.beginTransaction();
 			session.persist(user);
 			transaction.commit();
-			status=1;
-			
+			status = 1;
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			status=0;
+			status = 0;
 		}
 		return status;
 	}
 
 	@Override
 	public List<User> allUser() {
-		List<User> list=null;
-		try(Session session = sessionFactory.openSession()) {
-			String hql="FROM User";
+		List<User> list = null;
+		try (Session session = sessionFactory.openSession()) {
+			String hql = "FROM User";
 			Query<User> query = session.createQuery(hql);
-			 list = query.list();
-			
-			
+			list = query.list();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public boolean deleteUser(int id) {
+		boolean isDeleted = false;
+		try (Session session = sessionFactory.openSession()) {
+			Transaction transaction = session.beginTransaction();
+			User user = session.get(User.class, id);
+			session.delete(user);
+			transaction.commit();
+			isDeleted = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return isDeleted;
+	}
+
+	@Override
+	public User getUser(int id) {
+		User user = null;
+		try (Session session = sessionFactory.openSession()) {
+
+			user = session.get(User.class, id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	@Override
+	public boolean updateProfile(User user) {
+		boolean isUpdated=false;
+		try (Session session = sessionFactory.openSession()) {
+			Transaction transaction = session.beginTransaction();
+			session.update(user);
+			transaction.commit();
+			isUpdated=true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isUpdated;
 	}
 
 }
